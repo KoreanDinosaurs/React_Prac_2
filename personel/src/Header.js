@@ -13,8 +13,10 @@ function Header(){
 export default Header;
 
 const Bar = styled.div`
+    position: fixed;
     height: 50px;
     width: 100vw;
+    
     background-color: #9e9e9e;
     text-align: center;
 
