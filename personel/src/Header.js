@@ -1,11 +1,12 @@
 import React from "react";
+import { useNavigate } from "react-router-dom";
 import styled from "styled-components"
 
 function Header(){
-    
+    const navigate = useNavigate()
     return (
         <Bar>
-            <span>My Dictionary</span>
+            <span onClick={()=>{navigate('/')}}>My Dictionary</span>
         </Bar>
     )
 };
@@ -24,5 +25,6 @@ const Bar = styled.div`
         font-family: 'Oswald', sans-serif;
         font-size: 2rem;
         line-height: 50px;
-    }  
+        cursor: pointer;
+    }
 `;

@@ -1,15 +1,24 @@
 import React from "react";
+import { useSelector } from "react-redux";
 import styled from "styled-components";
 
 function Article(){
+    const dict_list = useSelector(state => state.data.list)
+    console.log(dict_list)
     return(
-        <Container>
-            <Word>강동현</Word>
-            <Sound>[]</Sound>
-            <Meaning>s</Meaning>
-            <Example>ss</Example>
-            <Translation>sss</Translation>
-        </Container>
+        <>
+            {dict_list.map((v,i) => {
+                return(
+                    <Container key={i}>
+                        <Word>{v.word}</Word>
+                        <Sound>[{v.sound}]</Sound>
+                        <Meaning>{v.meaning}</Meaning>
+                        <Example>{v.example}</Example>
+                        <Translation>{v.translation}</Translation>
+                    </Container>
+                )
+            })}
+        </>
     )
 }
 

@@ -14,9 +14,8 @@ export default Section;
 
 const Container = styled.div`
     float: right;
-    width: 100%;
-    padding: 20px 20px 20px 320px;
-    border: 1px red solid;
+    width: calc(100vw - 300px);
+    padding: 20px;
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     grid-gap: 10px;
