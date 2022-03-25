@@ -14,8 +14,7 @@ export default Nav
 const Wrap = styled.div`
     position: fixed;
     top: 50px;
+    bottom: 0;
     width: 300px;
-    height: 100vh;
-    background-color: #e0e0e0;
-    
+    background-color: #333;
 `;
