@@ -5,6 +5,7 @@ import Nav from './Nav';
 import Section from './Section';
 import {Route, Routes} from "react-router-dom"
 import Detail from './Detail';
+import Revise from './Revise';
 
 function App() {
   return (
@@ -15,6 +16,7 @@ function App() {
             <Routes>
                 <Route path="/" element={<Section />} />
                 <Route path="/detail" element={<Detail />} />
+                <Route path="/revise/:idx" element={<Revise />} />
             </Routes> 
         </Wrap> 
     </>

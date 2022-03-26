@@ -1,21 +1,25 @@
 import React, { useEffect, useRef } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { useNavigate, useParams } from "react-router-dom";
 import styled from "styled-components";
-import { useDispatch } from "react-redux";
-import { createData } from "./redux/modules/data";
-import { useNavigate } from "react-router-dom";
-function Detail() {
-    const dispatch = useDispatch();
-    const navigate = useNavigate();
-    const ref = useRef([])
-    const btnRef = useRef()
-    
-    useEffect(()=>{
-        btnRef.current.addEventListener("click", saveData);
+import { reviseData } from "./redux/modules/data";
 
-        // return () =>  btnRef.current.removeEventListener("click", saveData)
+function Revise() {
+    const ref = useRef([]), btnRef = useRef(), url = useParams(), navigate = useNavigate(), dispatch= useDispatch();
+    const dict_list = useSelector(state => state.data.list)
+   
+    useEffect(() => {
+        ref.current[0].value = dict_list[url.idx].word
+        ref.current[1].value = dict_list[url.idx].sound
+        ref.current[2].value = dict_list[url.idx].meaning
+        ref.current[3].value = dict_list[url.idx].example
+        ref.current[4].value = dict_list[url.idx].translation
+        // key값을 배열로 하면 문자가 돼서 작동을 안함,,,
+        
+        btnRef.current.addEventListener("click", revise);
     })
 
-    const saveData = () => {
+    const revise = () => {
         const data = ref.current.map(v => v.value)
         const info = {
             word: data[0],
@@ -25,13 +29,13 @@ function Detail() {
             translation: data[4],
             completed: 0,
         }
-        dispatch(createData(info))
+        dispatch(reviseData(info,url.idx))
     }
 
     return(
         <Container>
             <Wrap>
-                <span>단어 추가하기</span>
+                <span>단어 수정하기</span>
                 <Item>
                 <label>단어</label>
                 <Input ref={el => (ref.current[0] = el)} />
@@ -52,13 +56,13 @@ function Detail() {
                 <label>해석</label>
                 <Input ref={el => (ref.current[4] = el)} />
                 </Item>
-                <Button onClick={()=>{navigate('/revise')}} ref={btnRef}>저장하기</Button>
+                <Button onClick={()=>{navigate('/')}} ref={btnRef}>저장하기</Button>
             </Wrap>
         </Container>
     )
 }
 
-export default Detail;
+export default Revise;
 
 const Container = styled.div`
     float: right;
