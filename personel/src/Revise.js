@@ -37,26 +37,29 @@ function Revise() {
             <Wrap>
                 <span>단어 수정하기</span>
                 <Item>
-                <label>단어</label>
-                <Input ref={el => (ref.current[0] = el)} />
+                <label for="word">단어</label>
+                <Input id="word" ref={el => (ref.current[0] = el)} />
                 </Item>
                 <Item>
-                <label>발음</label>
-                <Input ref={el => (ref.current[1] = el)} />
+                <label for="sound">발음</label>
+                <Input id="sound" ref={el => (ref.current[1] = el)} />
                 </Item>
                 <Item>
-                <label>의미</label>
-                <Input ref={el => (ref.current[2] = el)} />
+                <label for="meaning">의미</label>
+                <Input id="meaning" ref={el => (ref.current[2] = el)} />
                 </Item>
                 <Item>
-                <label>예문</label>
-                <Input ref={el => (ref.current[3] = el)} />
+                <label for="example">예문</label>
+                <Input id="example" ref={el => (ref.current[3] = el)} />
                 </Item>
                 <Item>
-                <label>해석</label>
-                <Input ref={el => (ref.current[4] = el)} />
+                <label for="trans">해석</label>
+                <Input id="trans" ref={el => (ref.current[4] = el)} />
                 </Item>
-                <Button onClick={()=>{navigate('/')}} ref={btnRef}>저장하기</Button>
+                <BtnWrap>
+                    <Button onClick={()=>{navigate('/')}} ref={btnRef}>저장하기</Button>
+                    <Button onClick={()=>{navigate('/')}}>나가기</Button>
+                </BtnWrap>
             </Wrap>
         </Container>
     )
@@ -117,17 +120,20 @@ const Input = styled.input`
 `;
 
 const Button = styled.button`
-    margin-top: 50px;
     width: 100px;
     height: 35px;
     border: none;
     font-size: 1.2em;
     font-weight: bold;
     border-radius: 10px;
+    margin: 50px 20px 0 20px;
     background-color: #e0e0e0;
 
     &:hover {
         background-color: #333;
         color: white;
     }
+`;
+
+const BtnWrap = styled.div`   
 `;

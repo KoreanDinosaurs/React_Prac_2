@@ -52,7 +52,10 @@ function Detail() {
                 <label>해석</label>
                 <Input ref={el => (ref.current[4] = el)} />
                 </Item>
-                <Button onClick={()=>{navigate('/revise')}} ref={btnRef}>저장하기</Button>
+                <BtnWrap>
+                    <Button onClick={()=>{navigate('/')}} ref={btnRef}>저장하기</Button>
+                    <Button onClick={()=>{navigate('/')}}>나가기</Button>
+                </BtnWrap>
             </Wrap>
         </Container>
     )
@@ -113,7 +116,6 @@ const Input = styled.input`
 `;
 
 const Button = styled.button`
-    margin-top: 50px;
     width: 100px;
     height: 35px;
     border: none;
@@ -121,9 +123,13 @@ const Button = styled.button`
     font-weight: bold;
     border-radius: 10px;
     background-color: #e0e0e0;
-
+    margin: 50px 20px 0 20px;
     &:hover {
         background-color: #333;
         color: white;
     }
+`;
+
+const BtnWrap = styled.div`
+    
 `;
