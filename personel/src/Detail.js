@@ -23,6 +23,7 @@ function Detail() {
             meaning: data[2],
             example: data[3],
             translation: data[4],
+            completed: 0,
         }
         dispatch(createData(info))
     }
