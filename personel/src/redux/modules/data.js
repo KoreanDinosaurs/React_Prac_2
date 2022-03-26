@@ -2,6 +2,7 @@
 const LOAD   = 'data/LOAD';
 const CREATE = 'data/CREATE';
 const UPDATE = 'data/UPDATE';
+const DELETE = 'data/DELETE';
 const initialState = {list:[
     {
         word: "말하는감자",
@@ -26,6 +27,9 @@ export function updateData(data) {
   return { type: UPDATE, data };
 }
 
+export function deleteData(data) {
+  return { type: DELETE, data };
+}
 
 // Reducer
 export default function reducer(state = initialState, action = {}) {
@@ -40,6 +44,9 @@ export default function reducer(state = initialState, action = {}) {
           const update_dictionary_arr = state.list.map((v, i) => i === parseInt(action.data) ? (v.completed ? {...v, completed: 0} : {...v, completed: 1}) : v)
           console.log("업데이트", update_dictionary_arr)
           return {list: update_dictionary_arr};
+      case DELETE:
+          const delete_dictionary_arr = state.list.filter((v, i) => i !== parseInt(action.data))
+          return {list: delete_dictionary_arr}
       default: return state;
     }
   }

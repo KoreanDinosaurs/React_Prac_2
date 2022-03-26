@@ -3,7 +3,6 @@ import Header from './Header';
 import styled from 'styled-components';
 import Nav from './Nav';
 import Section from './Section';
-import Create from './Create';
 import {Route, Routes} from "react-router-dom"
 import Detail from './Detail';
 
@@ -18,7 +17,6 @@ function App() {
                 <Route path="/detail" element={<Detail />} />
             </Routes> 
         </Wrap> 
-        <Create />  
     </>
   );
 }

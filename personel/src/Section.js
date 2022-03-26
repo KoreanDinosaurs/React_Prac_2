@@ -1,11 +1,13 @@
 import React from "react";
 import styled from "styled-components";
 import Article from "./Article";
+import Create from "./Create";
 
 function Section(){
     return (
         <Container>
             <Article />
+            <Create />
         </Container>
     )
 }

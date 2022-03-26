@@ -30,17 +30,30 @@ function Detail() {
 
     return(
         <Container>
-            <label>단어</label>
-            <Input ref={el => (ref.current[0] = el)} placeholder="단어를 입력해주세요."/>
-            <label>발음</label>
-            <Input ref={el => (ref.current[1] = el)} placeholder="발음을 입력해주세요."/>
-            <label>의미</label>
-            <Input ref={el => (ref.current[2] = el)} placeholder="의미를 입력해주세요."/>
-            <label>예문</label>
-            <Input ref={el => (ref.current[3] = el)} placeholder="예문을 입력해주세요."/>
-            <label>해석</label>
-            <Input ref={el => (ref.current[4] = el)} placeholder="해석을 입력해주세요."/>
-            <Button onClick={()=>{navigate('/')}} ref={btnRef}>저장하기</Button>
+            <Wrap>
+                <span>단어 추가하기</span>
+                <Item>
+                <label>단어</label>
+                <Input ref={el => (ref.current[0] = el)} />
+                </Item>
+                <Item>
+                <label>발음</label>
+                <Input ref={el => (ref.current[1] = el)} />
+                </Item>
+                <Item>
+                <label>의미</label>
+                <Input ref={el => (ref.current[2] = el)} />
+                </Item>
+                <Item>
+                <label>예문</label>
+                <Input ref={el => (ref.current[3] = el)} />
+                </Item>
+                <Item>
+                <label>해석</label>
+                <Input ref={el => (ref.current[4] = el)} />
+                </Item>
+                <Button onClick={()=>{navigate('/')}} ref={btnRef}>저장하기</Button>
+            </Wrap>
         </Container>
     )
 }
@@ -48,28 +61,69 @@ function Detail() {
 export default Detail;
 
 const Container = styled.div`
-    display: flex;
-    flex-direction: column;
     float: right;
     width: calc(100vw - 300px);
     height: calc(100vh - 50px);
-    padding: 20px;
-    border: 1px red solid;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+`;
+
+const Wrap = styled.div`
+    /* height: 70%; */
+    height: 600px;
+    width: 25%;
+    min-width: 400px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 40px 0px;
+    border-radius: 10px;
+    background-color: white;
+
+    span {
+        font-size: 1.5em;
+        font-weight: bold;
+    }
+`;
+
+const Item = styled.div`
+    width: 100%;
+    text-align: center;
+    margin-top: 15px;
+
+    label {
+        position: absolute;
+    }
 `;
 
 const Input = styled.input`
-    width: 300px;
-    height: 30px;
+    height: 40px;
+    width: 80%;
+    margin-top: 25px;
+    font-size:1.2em;
     border: none;
     border-bottom: 1px solid black;
     background-color:transparent;
 
-    &:focus, &:hover {
+    &:focus, :hover {
         outline: none;
         border-bottom: 2px solid black;
     }
 `;
 
 const Button = styled.button`
+    margin-top: 50px;
     width: 100px;
+    height: 35px;
+    border: none;
+    font-size: 1.2em;
+    font-weight: bold;
+    border-radius: 10px;
+    background-color: #e0e0e0;
+
+    &:hover {
+        background-color: #333;
+        color: white;
+    }
 `;
