@@ -130,6 +130,5 @@ const Button = styled.button`
     }
 `;
 
-const BtnWrap = styled.div`
-    
+const BtnWrap = styled.div`   
 `;
