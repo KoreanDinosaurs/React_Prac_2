@@ -1,12 +1,18 @@
 import React from "react";
+import { Route, Routes } from "react-router-dom";
 import styled from "styled-components";
 import Article from "./Article";
 import Create from "./Create";
+import Korea from "./Korea";
 
 function Section(){
     return (
         <Container>
-            <Article />
+            <Routes>
+                <Route path="/*" element={<Article/>}/>
+                <Route path="/korea" element={<Korea/>}/>
+            </Routes>
+            {/* <Article /> */}
             <Create />
         </Container>
     )

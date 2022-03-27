@@ -5,14 +5,24 @@ const UPDATE = 'data/UPDATE';
 const DELETE = 'data/DELETE';
 const REVISE = 'data/REVISE';
 const initialState = {list:[
-    {
-        word: "말하는감자",
-        sound: "뫌하는괌좌",
-        meaning: "강원도감자",
-        example: "맛있어요",
-        translation: "비싸요",
-        completed: 0,
-    }
+    {   
+      language: 'China',
+      word: "말하는감자",
+      sound: "뫌하는괌좌",
+      meaning: "강원도감자",
+      example: "맛있어요",
+      translation: "비싸요",
+      completed: 0,
+    },
+    {   
+      language: 'Korea',
+      word: "한국감자",
+      sound: "뫌하는괌좌",
+      meaning: "강원도감자",
+      example: "맛있어요",
+      translation: "비싸요",
+      completed: 0,
+  }
 ]};
 
 // Action Creators

@@ -1,10 +1,11 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import styled from "styled-components";
 
 function Nav(){
     return(
         <Wrap>
-
+            <Link to="/korea">한국어</Link>
         </Wrap>
     )
 }

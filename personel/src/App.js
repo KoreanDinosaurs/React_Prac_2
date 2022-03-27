@@ -14,10 +14,10 @@ function App() {
         <Wrap>
             <Nav/>
             <Routes>
-                <Route path="/" element={<Section />} />
+                <Route path="/*" element={<Section />} />
                 <Route path="/detail" element={<Detail />} />
                 <Route path="/revise/:idx" element={<Revise />} />
-            </Routes> 
+            </Routes>  
         </Wrap> 
     </>
   );
