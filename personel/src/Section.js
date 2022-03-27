@@ -2,15 +2,20 @@ import React from "react";
 import { Route, Routes } from "react-router-dom";
 import styled from "styled-components";
 import Article from "./Article";
+import Chinese from "./Chinese";
 import Create from "./Create";
-import Korea from "./Korea";
+import English from "./English";
+import Japanese from "./Japanese";
+
 
 function Section(){
     return (
         <Container>
             <Routes>
                 <Route path="/*" element={<Article/>}/>
-                <Route path="/korea" element={<Korea/>}/>
+                <Route path="/english" element={<English/>}/>
+                <Route path="/japanese" element={<Japanese/>}/>
+                <Route path="/chinese" element={<Chinese/>}/>
             </Routes>
             {/* <Article /> */}
             <Create />

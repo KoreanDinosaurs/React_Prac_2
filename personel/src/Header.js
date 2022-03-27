@@ -14,6 +14,7 @@ function Header(){
 export default Header;
 
 const Bar = styled.div`
+    text-align: center;
     position: fixed;
     height: 50px;
     width: 100vw;

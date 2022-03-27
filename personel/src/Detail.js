@@ -15,9 +15,18 @@ function Detail() {
         // return () =>  btnRef.current.removeEventListener("click", saveData)
     })
 
+    const lang = {language: ''}
+
+    const click = (e) => {
+        console.log(e.target.dataset.lang)
+        return lang.language = e.target.dataset.lang
+    }
+
     const saveData = () => {
         const data = ref.current.map(v => v.value)
+        
         const info = {
+            ...lang,
             word: data[0],
             sound: data[1],
             meaning: data[2],
@@ -32,6 +41,11 @@ function Detail() {
         <Container>
             <Wrap>
                 <span>단어 추가하기</span>
+                <BtnWrap className="langBtn">
+                    <button onClick={click} data-lang="en">영어</button>
+                    <button onClick={click} data-lang="cn">중국어</button>
+                    <button onClick={click} data-lang="ja">일본어</button>
+                </BtnWrap>
                 <Item>
                 <label>단어</label>
                 <Input ref={el => (ref.current[0] = el)} />

@@ -4,8 +4,8 @@ import { Link } from "react-router-dom";
 import styled from "styled-components";
 import { deleteData, updateData } from "./redux/modules/data";
 
-function Korea(){
-    const dict_list = useSelector(state => state.data.list).filter(v => v.language === 'Korea')
+function Japanese(){
+    const dict_list = useSelector(state => state.data.list).filter(v => v.language === 'ja')
 
     const dispatch = useDispatch()
     
@@ -54,7 +54,7 @@ function Korea(){
     )
 }
 
-export default Korea;
+export default Japanese;
 
 const Container = styled.div`
     position: relative;

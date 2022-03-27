@@ -27,7 +27,6 @@ function Revise() {
             meaning: data[2],
             example: data[3],
             translation: data[4],
-            completed: 0,
         }
         dispatch(reviseData(info,url.idx))
     }
@@ -37,23 +36,23 @@ function Revise() {
             <Wrap>
                 <span>단어 수정하기</span>
                 <Item>
-                <label for="word">단어</label>
+                <label htmlFor="word">단어</label>
                 <Input id="word" ref={el => (ref.current[0] = el)} />
                 </Item>
                 <Item>
-                <label for="sound">발음</label>
+                <label htmlFor="sound">발음</label>
                 <Input id="sound" ref={el => (ref.current[1] = el)} />
                 </Item>
                 <Item>
-                <label for="meaning">의미</label>
+                <label htmlFor="meaning">의미</label>
                 <Input id="meaning" ref={el => (ref.current[2] = el)} />
                 </Item>
                 <Item>
-                <label for="example">예문</label>
+                <label htmlFor="example">예문</label>
                 <Input id="example" ref={el => (ref.current[3] = el)} />
                 </Item>
                 <Item>
-                <label for="trans">해석</label>
+                <label htmlFor="trans">해석</label>
                 <Input id="trans" ref={el => (ref.current[4] = el)} />
                 </Item>
                 <BtnWrap>
