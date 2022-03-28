@@ -7,7 +7,7 @@ import { reviseData } from "./redux/modules/data";
 function Revise() {
     const ref = useRef([]), btnRef = useRef(), url = useParams(), navigate = useNavigate(), dispatch= useDispatch();
     const dict_list = useSelector(state => state.data.list)
-   
+    console.log(url.idx)
     useEffect(() => {
         ref.current[0].value = dict_list[url.idx].word
         ref.current[1].value = dict_list[url.idx].sound
@@ -56,8 +56,8 @@ function Revise() {
                 <Input id="trans" ref={el => (ref.current[4] = el)} />
                 </Item>
                 <BtnWrap>
-                    <Button onClick={()=>{navigate('/')}} ref={btnRef}>저장하기</Button>
-                    <Button onClick={()=>{navigate('/')}}>나가기</Button>
+                    <Button onClick={()=>{navigate(-1)}} ref={btnRef}>저장하기</Button>
+                    <Button onClick={()=>{navigate(-1)}}>나가기</Button>
                 </BtnWrap>
             </Wrap>
         </Container>

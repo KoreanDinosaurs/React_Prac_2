@@ -1,11 +1,12 @@
 import React, { useEffect, useRef } from "react";
 import styled from "styled-components";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { createData } from "./redux/modules/data";
 import { useNavigate } from "react-router-dom";
 function Detail() {
     const dispatch = useDispatch();
     const navigate = useNavigate();
+    const dict_list = useSelector(state => state.data.list)
     const ref = useRef([])
     const btnRef = useRef()
     
@@ -24,9 +25,12 @@ function Detail() {
 
     const saveData = () => {
         const data = ref.current.map(v => v.value)
-        
+        const id = () => {
+           return  dict_list.length
+        }
         const info = {
             ...lang,
+            id: id(),
             word: data[0],
             sound: data[1],
             meaning: data[2],
