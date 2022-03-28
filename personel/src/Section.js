@@ -3,7 +3,7 @@ import { Route, Routes } from "react-router-dom";
 import styled from "styled-components";
 import Article from "./Article";
 import Chinese from "./Chinese";
-import Create from "./Create";
+import CreateBtn from "./CreateBtn";
 import English from "./English";
 import Japanese from "./Japanese";
 
@@ -18,7 +18,7 @@ function Section(){
                 <Route path="/chinese" element={<Chinese/>}/>
             </Routes>
             {/* <Article /> */}
-            <Create />
+            <CreateBtn />
         </Container>
     )
 }
@@ -28,8 +28,8 @@ export default Section;
 const Container = styled.div`
     float: right;
     width: calc(100vw - 300px);
-    padding: 20px;
+    padding: 20px 40px;
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    grid-gap: 10px;
+    grid-gap: 40px;
 `;

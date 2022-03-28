@@ -2,7 +2,7 @@ import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
-import { deleteData, updateData } from "./redux/modules/data";
+import { deleteData, deleteDataFB, updateData, updateDataFB2 } from "./redux/modules/data";
 
 function Article(){
     const dict_list = useSelector(state => state.data.list)
@@ -10,12 +10,12 @@ function Article(){
     
     const click_btn = (e) => {
         const idx = e.target.dataset.id
-        dispatch(updateData(idx)) 
+        dispatch(updateDataFB2(idx)) 
     }
 
     const click_cancle = (e) => {
         const idx = e.target.dataset.id
-        dispatch(deleteData(idx))
+        dispatch(deleteDataFB(idx))
     }
 
     return(

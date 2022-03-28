@@ -4,10 +4,20 @@ import styled from 'styled-components';
 import Nav from './Nav';
 import Section from './Section';
 import {Route, Routes} from "react-router-dom"
-import Detail from './Detail';
+import Create from './Create';
 import Revise from './Revise';
+import {db} from "./firebase"
+import React from 'react';
+import { loadDataFB } from './redux/modules/data';
+import { useDispatch } from 'react-redux';
 
 function App() {
+  const dispatch = useDispatch()
+
+  React.useEffect(() => {
+    dispatch(loadDataFB())
+  }, [])
+ 
   return (
     <>
         <Header />
@@ -15,8 +25,8 @@ function App() {
             <Nav/>
             <Routes>
                 <Route path="/*" element={<Section />} />
-                <Route path="/detail" element={<Detail />} />
-                <Route path="/revise/:idx" element={<Revise />} />
+                <Route path="/detail" element={<Create />} />
+                <Route path="/revise/:id" element={<Revise />} />
             </Routes>  
         </Wrap> 
     </>

@@ -1,43 +1,153 @@
-import React from "react";
-import { useNavigate } from "react-router-dom";
+import React, { useEffect, useRef } from "react";
 import styled from "styled-components";
-
+import { useDispatch, useSelector } from "react-redux";
+import { createData, createDataFB } from "./redux/modules/data";
+import { useNavigate } from "react-router-dom";
 function Create() {
-    const navigate = useNavigate()
+    const dispatch = useDispatch();
+    const navigate = useNavigate();
+    const dict_list = useSelector(state => state.data.list)
+    const ref = useRef([])
+    const btnRef = useRef()
     
+    useEffect(()=>{
+        btnRef.current.addEventListener("click", addData);
+
+        // return () =>  btnRef.current.removeEventListener("click", saveData)
+    }, [])
+
+    const lang = {language: ''}
+
+    const click = (e) => {
+        console.log(e.target.dataset.lang)
+        return lang.language = e.target.dataset.lang
+    }
+
+    const addData = () => {
+        const data = ref.current.map(v => v.value)
+        // id가 저절로 생성될거임!
+        // const id = () => {
+        //    return  dict_list.length
+        // }
+        const info = {
+            ...lang,
+            // id: id(),
+            word: data[0],
+            sound: data[1],
+            meaning: data[2],
+            example: data[3],
+            translation: data[4],
+            completed: 0,
+        }
+        dispatch(createDataFB(info))
+    }
+
     return(
-        <Button onClick={()=>{navigate('/detail')}}>
-            <svg stroke="currentColor" fill="currentColor" strokeWidth="0" version="1.2" baseProfile="tiny" viewBox="0 0 24 24" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg">
-                <path d="M18 10h-4v-4c0-1.104-.896-2-2-2s-2 .896-2 2l.071 4h-4.071c-1.104 0-2 .896-2 2s.896 2 2 2l4.071-.071-.071 4.071c0 1.104.896 2 2 2s2-.896 2-2v-4.071l4 .071c1.104 0 2-.896 2-2s-.896-2-2-2z"></path>
-            </svg>
-        </Button>
+        <Container>
+            <Wrap>
+                <span>단어 추가하기</span>
+                <BtnWrap className="langBtn">
+                    <button onClick={click} data-lang="en">영어</button>
+                    <button onClick={click} data-lang="cn">중국어</button>
+                    <button onClick={click} data-lang="ja">일본어</button>
+                </BtnWrap>
+                <Item>
+                <label>단어</label>
+                <Input ref={el => (ref.current[0] = el)} />
+                </Item>
+                <Item>
+                <label>발음</label>
+                <Input ref={el => (ref.current[1] = el)} />
+                </Item>
+                <Item>
+                <label>의미</label>
+                <Input ref={el => (ref.current[2] = el)} />
+                </Item>
+                <Item>
+                <label>예문</label>
+                <Input ref={el => (ref.current[3] = el)} />
+                </Item>
+                <Item>
+                <label>해석</label>
+                <Input ref={el => (ref.current[4] = el)} />
+                </Item>
+                <BtnWrap>
+                    <Button onClick={()=>{navigate('/')}} ref={btnRef}>저장하기</Button>
+                    <Button onClick={()=>{navigate('/')}}>나가기</Button>
+                </BtnWrap>
+            </Wrap>
+        </Container>
     )
 }
 
 export default Create;
 
-const Button = styled.button`
-    position: fixed;
-    bottom: 20px;
-    right: 20px;
-    width: 50px;
-    height: 50px;
-    border-radius: 50px;
-    background-color: #333;
-    border: none;
-    cursor: pointer;
-    font-size: 36px;
+const Container = styled.div`
+    float: right;
+    width: calc(100vw - 300px);
+    height: calc(100vh - 50px);
     display: flex;
     justify-content: center;
     align-items: center;
-    color: white;
-    transition: .4s ease-in-out;
+`;
 
-    &:hover {
-        transform: rotate(90deg);
-        transition: .4s ease-in-out;
+const Wrap = styled.div`
+    /* height: 70%; */
+    height: 600px;
+    width: 25%;
+    min-width: 400px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 40px 0px;
+    border-radius: 10px;
+    background-color: white;
+
+    span {
+        font-size: 1.5em;
+        font-weight: bold;
     }
 `;
 
-// 명암 주기
-// svg 삽입
+const Item = styled.div`
+    width: 100%;
+    text-align: center;
+    margin-top: 15px;
+
+    label {
+        position: absolute;
+    }
+`;
+
+const Input = styled.input`
+    height: 40px;
+    width: 80%;
+    margin-top: 25px;
+    font-size:1.2em;
+    border: none;
+    border-bottom: 1px solid black;
+    background-color:transparent;
+
+    &:focus, :hover {
+        outline: none;
+        border-bottom: 2px solid black;
+    }
+`;
+
+const Button = styled.button`
+    width: 100px;
+    height: 35px;
+    border: none;
+    font-size: 1.2em;
+    font-weight: bold;
+    border-radius: 10px;
+    background-color: #e0e0e0;
+    margin: 50px 20px 0 20px;
+    &:hover {
+        background-color: #333;
+        color: white;
+    }
+`;
+
+const BtnWrap = styled.div`   
+`;

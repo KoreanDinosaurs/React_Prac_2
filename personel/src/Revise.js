@@ -2,22 +2,23 @@ import React, { useEffect, useRef } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate, useParams } from "react-router-dom";
 import styled from "styled-components";
-import { reviseData } from "./redux/modules/data";
+import { reviseData, updateDataFB } from "./redux/modules/data";
 
 function Revise() {
     const ref = useRef([]), btnRef = useRef(), url = useParams(), navigate = useNavigate(), dispatch= useDispatch();
     const dict_list = useSelector(state => state.data.list)
-    console.log(url.idx)
+    
     useEffect(() => {
-        ref.current[0].value = dict_list[url.idx].word
-        ref.current[1].value = dict_list[url.idx].sound
-        ref.current[2].value = dict_list[url.idx].meaning
-        ref.current[3].value = dict_list[url.idx].example
-        ref.current[4].value = dict_list[url.idx].translation
+        const dict = dict_list.filter(v => v.id === url.id)[0]
+        ref.current[0].value = dict.word
+        ref.current[1].value = dict.sound
+        ref.current[2].value = dict.meaning
+        ref.current[3].value = dict.example
+        ref.current[4].value = dict.translation
         // key값을 배열로 하면 문자가 돼서 작동을 안함,,,
         
         btnRef.current.addEventListener("click", revise);
-    })
+    }, [])
 
     const revise = () => {
         const data = ref.current.map(v => v.value)
@@ -28,7 +29,7 @@ function Revise() {
             example: data[3],
             translation: data[4],
         }
-        dispatch(reviseData(info,url.idx))
+        dispatch(updateDataFB(info, url.id))
     }
 
     return(
