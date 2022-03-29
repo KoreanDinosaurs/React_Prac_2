@@ -62,9 +62,9 @@ function Create() {
             <Wrap>
                 <span>단어 추가하기</span>
                 <BtnWrap2 className="langBtn">
-                    <button onClick={click} id="en" data-lang="en">영어</button>
-                    <button onClick={click} id="cn" data-lang="cn">중국어</button>
-                    <button onClick={click} id="ja" data-lang="ja">일본어</button>
+                    <button onClick={click} id="en">영어</button>
+                    <button onClick={click} id="cn">중국어</button>
+                    <button onClick={click} id="ja">일본어</button>
                 </BtnWrap2>
                 <Item>
                 <label>단어</label>

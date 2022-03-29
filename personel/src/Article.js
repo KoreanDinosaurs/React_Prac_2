@@ -2,7 +2,7 @@ import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
-import { deleteData, deleteDataFB, updateData, updateDataFB2 } from "./redux/modules/data";
+import { deleteDataFB, updateDataFB2 } from "./redux/modules/data";
 
 function Article(){
     const dict_list = useSelector(state => state.data.list)
@@ -24,9 +24,9 @@ function Article(){
                 const completeNum = dict_list[i].completed
                 return(
                     <Container num={completeNum} key={v.id}>
-                        <Word num={completeNum}>{v.word}</Word>
-                        <Sound num={completeNum}>[{v.sound}]</Sound>
-                        <Meaning num={completeNum}>{v.meaning}</Meaning>
+                        <Word>{v.word}</Word>
+                        <Sound>[{v.sound}]</Sound>
+                        <Meaning>{v.meaning}</Meaning>
                         <Example num={completeNum}>{v.example}</Example>
                         <Translation num={completeNum}>{v.translation}</Translation>
                         <Wrap num={completeNum}>
@@ -64,21 +64,19 @@ const Container = styled.div`
     padding: 1em;
     display: flex;
     flex-direction: column;
+    color: ${props => props.num ? "white" : "black"};
 `;
 
 const Word = styled.span`
     font-size: 2em;
     font-weight: bold;
-    color: ${props => props.num ? "white" : "black"};
 `;
 
 const Sound = styled.span`
-    color: ${props => props.num ? "white" : "black"};
     margin-left: 0.2em;
 `;
 
 const Meaning = styled.span`
-    color: ${props => props.num ? "white" : "black"};
     margin-left: 0.2em;
 `;
 

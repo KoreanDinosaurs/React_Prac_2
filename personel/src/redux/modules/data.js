@@ -1,4 +1,3 @@
-import { async } from "@firebase/util";
 import {
   collection,
   doc,
@@ -133,7 +132,6 @@ export default function reducer(state = initialState, action = {}) {
           return {list: action.data_list};
       case CREATE:
           const new_dictionary_arr = [...state.list, action.data]
-          // console.log(new_dictionary_arr)
           return {list: new_dictionary_arr};
       case UPDATE:
           const update_dictionary_arr = state.list.map((v, i) => v.id === action.data ? (v.completed ? {...v, completed: 0} : {...v, completed: 1}) : v)
