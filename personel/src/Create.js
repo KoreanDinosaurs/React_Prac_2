@@ -54,7 +54,7 @@ function Create() {
         }
         
         dispatch(createDataFB(info));
-        navigate('/');
+        navigate(-1);
     }
 
     return(

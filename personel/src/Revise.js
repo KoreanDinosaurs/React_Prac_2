@@ -7,7 +7,7 @@ import { updateDataFB } from "./redux/modules/data";
 function Revise() {
     const ref = useRef([]), btnRef = useRef(), url = useParams(), navigate = useNavigate(), dispatch= useDispatch();
     const dict_list = useSelector(state => state.data.list)
-    
+    console.log(url)
     useEffect(() => {
         const dict = dict_list.filter(v => v.id === url.id)[0]
         ref.current[0].value = dict.word
@@ -37,7 +37,7 @@ function Revise() {
             translation: data[4],
         }
         dispatch(updateDataFB(info, url.id))
-        navigate('/')
+        navigate(-1)
     }
 
     return(

@@ -20,7 +20,7 @@ function Nav(){
         }
 
         setPrevClick(currentClick)
-        
+
     }, [currentClick])
 
     const click = (e) => {
