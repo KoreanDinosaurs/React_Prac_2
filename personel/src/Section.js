@@ -11,13 +11,13 @@ import Japanese from "./Japanese";
 function Section(){
     return (
         <Container>
+            
             <Routes>
                 <Route path="/*" element={<Article/>}/>
                 <Route path="/english" element={<English/>}/>
                 <Route path="/japanese" element={<Japanese/>}/>
                 <Route path="/chinese" element={<Chinese/>}/>
             </Routes>
-            {/* <Article /> */}
             <CreateBtn />
         </Container>
     )

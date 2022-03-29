@@ -2,7 +2,7 @@ import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
-import { deleteData, deleteDataFB, updateData, updateDataFB2 } from "./redux/modules/data";
+import { deleteDataFB, updateDataFB2 } from "./redux/modules/data";
 
 function Chinese(){
     const dict_list = useSelector(state => state.data.list).filter(v => v.language === 'cn')

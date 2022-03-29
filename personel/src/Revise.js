@@ -7,9 +7,10 @@ import { updateDataFB } from "./redux/modules/data";
 function Revise() {
     const ref = useRef([]), btnRef = useRef(), url = useParams(), navigate = useNavigate(), dispatch= useDispatch();
     const dict_list = useSelector(state => state.data.list)
-    console.log(url)
+    
     useEffect(() => {
         const dict = dict_list.filter(v => v.id === url.id)[0]
+        
         ref.current[0].value = dict.word
         ref.current[1].value = dict.sound
         ref.current[2].value = dict.meaning

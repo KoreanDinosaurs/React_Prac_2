@@ -6,6 +6,7 @@ import { deleteDataFB, updateDataFB2 } from "./redux/modules/data";
 
 function Article(){
     const dict_list = useSelector(state => state.data.list)
+    
     const dispatch = useDispatch()
     
     const click_btn = (e) => {

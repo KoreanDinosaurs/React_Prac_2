@@ -8,25 +8,25 @@ function Create() {
     const dispatch = useDispatch();
     const navigate = useNavigate();
     
-    const ref = useRef([])
-    const btnRef = useRef()
+    const ref = useRef([]);
+    const btnRef = useRef();
 
-    const [currentClick, setCurrentClick] = useState(null)
-    const [prevClick, setPrevClick] = useState(null)
+    const [currentClick, setCurrentClick] = useState(null);
+    const [prevClick, setPrevClick] = useState(null);
 
     useEffect(()=>{
         if(currentClick){
             let current = document.getElementById(currentClick);
-            current.style.color = "white"
-            current.style.background = "#333"
+            current.style.color = "white";
+            current.style.background = "#333";
         }
         
         if(prevClick){
-            let prev = document.getElementById(prevClick)
-            prev.style.color = "black"
-            prev.style.background = "transparent"
+            let prev = document.getElementById(prevClick);
+            prev.style.color = "black";
+            prev.style.background = "transparent";
         }
-        setPrevClick(currentClick)
+        setPrevClick(currentClick);
     }, [currentClick])
 
     const click = (e) => {

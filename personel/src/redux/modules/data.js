@@ -97,9 +97,6 @@ export const updateDataFB2 = (id) => {
     if(docSnap.data().completed) await updateDoc(docRef, {completed: 0})
     else await updateDoc(docRef, {completed: 1})
     
-    // console.log(docRef.completed)
-    // if(docRef.completed) await updateDoc(docRef, {completed: 1})
-    // else await updateDoc(docRef, {completed: 1})
     
     // getState()를 사용해서 스토어의 데이터를 가져올 수 있어!
     console.log(getState().data)

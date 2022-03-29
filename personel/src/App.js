@@ -8,6 +8,7 @@ import Revise from './Revise';
 import React from 'react';
 import { loadDataFB } from './redux/modules/data';
 import { useDispatch } from 'react-redux';
+import Article from './Article';
 
 function App() {
   const dispatch = useDispatch()
