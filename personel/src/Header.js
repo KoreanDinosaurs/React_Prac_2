@@ -21,6 +21,7 @@ const Bar = styled.div`
     background-color: #fff;
     box-shadow: 0 2px 2px rgba(0, 0, 0, 0.05), 0 1px 0 rgba(0, 0, 0, 0.05);
     padding-left: 20px;
+    z-index: 1000;
 
     & > span {
         font-family: 'Oswald', sans-serif;

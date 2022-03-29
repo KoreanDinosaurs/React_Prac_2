@@ -1,37 +1,43 @@
-import React, { useEffect, useRef } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import styled from "styled-components";
-import { useDispatch, useSelector } from "react-redux";
-import { createData, createDataFB } from "./redux/modules/data";
+import { useDispatch } from "react-redux";
+import { createDataFB } from "./redux/modules/data";
 import { useNavigate } from "react-router-dom";
+
 function Create() {
     const dispatch = useDispatch();
     const navigate = useNavigate();
-    const dict_list = useSelector(state => state.data.list)
+    
     const ref = useRef([])
     const btnRef = useRef()
-    
-    useEffect(()=>{
-        btnRef.current.addEventListener("click", addData);
 
-        // return () =>  btnRef.current.removeEventListener("click", saveData)
-    }, [])
+    const [currentClick, setCurrentClick] = useState(null)
+    const [prevClick, setPrevClick] = useState(null)
 
-    const lang = {language: ''}
+    useEffect((e)=>{
+        if(currentClick){
+            let current = document.getElementById(currentClick);
+            current.style.color = "white"
+            current.style.background = "#333"
+        }
+        
+        if(prevClick){
+            let prev = document.getElementById(prevClick)
+            prev.style.color = "black"
+            prev.style.background = "transparent"
+        }
+        setPrevClick(currentClick)
+    }, [currentClick])
 
     const click = (e) => {
-        console.log(e.target.dataset.lang)
-        return lang.language = e.target.dataset.lang
+        setCurrentClick(e.target.id) 
     }
-
+ 
     const addData = () => {
         const data = ref.current.map(v => v.value)
-        // id가 저절로 생성될거임!
-        // const id = () => {
-        //    return  dict_list.length
-        // }
+        console.log(currentClick)
         const info = {
-            ...lang,
-            // id: id(),
+            language: currentClick,
             word: data[0],
             sound: data[1],
             meaning: data[2],
@@ -39,18 +45,19 @@ function Create() {
             translation: data[4],
             completed: 0,
         }
-        dispatch(createDataFB(info))
+        dispatch(createDataFB(info));
+        navigate(-1);
     }
 
     return(
         <Container>
             <Wrap>
                 <span>단어 추가하기</span>
-                <BtnWrap className="langBtn">
-                    <button onClick={click} data-lang="en">영어</button>
-                    <button onClick={click} data-lang="cn">중국어</button>
-                    <button onClick={click} data-lang="ja">일본어</button>
-                </BtnWrap>
+                <BtnWrap2 className="langBtn">
+                    <button onClick={click} id="en" data-lang="en">영어</button>
+                    <button onClick={click} id="cn" data-lang="cn">중국어</button>
+                    <button onClick={click} id="ja" data-lang="ja">일본어</button>
+                </BtnWrap2>
                 <Item>
                 <label>단어</label>
                 <Input ref={el => (ref.current[0] = el)} />
@@ -72,8 +79,8 @@ function Create() {
                 <Input ref={el => (ref.current[4] = el)} />
                 </Item>
                 <BtnWrap>
-                    <Button onClick={()=>{navigate('/')}} ref={btnRef}>저장하기</Button>
-                    <Button onClick={()=>{navigate('/')}}>나가기</Button>
+                    <Button onClick={addData} ref={btnRef}>저장하기</Button>
+                    <Button onClick={()=>{navigate(-1)}}>나가기</Button>
                 </BtnWrap>
             </Wrap>
         </Container>
@@ -92,14 +99,13 @@ const Container = styled.div`
 `;
 
 const Wrap = styled.div`
-    /* height: 70%; */
     height: 600px;
     width: 25%;
     min-width: 400px;
     display: flex;
     flex-direction: column;
     align-items: center;
-    padding: 40px 0px;
+    padding: 30px 0px;
     border-radius: 10px;
     background-color: white;
 
@@ -142,12 +148,29 @@ const Button = styled.button`
     font-weight: bold;
     border-radius: 10px;
     background-color: #e0e0e0;
-    margin: 50px 20px 0 20px;
+    margin: 25px 20px 0 20px;
     &:hover {
         background-color: #333;
         color: white;
     }
 `;
 
-const BtnWrap = styled.div`   
+const BtnWrap = styled.div`  
+`;
+
+const BtnWrap2 = styled.div`
+    & > button {
+        margin: 20px 10px 0 10px;
+        font-size: 1em;
+        border-radius: 10px;
+        border: 1px solid gray;
+        padding: 2px 5px;
+        cursor: pointer;
+        background-color: transparent;
+    }
+
+    & > button:hover {
+        color: white;
+        background-color: #333;
+    }
 `;

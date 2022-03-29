@@ -93,10 +93,17 @@ export const updateDataFB2 = (id) => {
   return async function (dispatch, getState){
     // 수정할 도큐먼트를 가져오고,
     const docRef = doc(db, "dictionary", id)
+    const docSnap = await getDoc(docRef)
     // 수정!
-    await updateDoc(docRef, {completed: 1})
+    if(docSnap.data().completed) await updateDoc(docRef, {completed: 0})
+    else await updateDoc(docRef, {completed: 1})
+    
+    // console.log(docRef.completed)
+    // if(docRef.completed) await updateDoc(docRef, {completed: 1})
+    // else await updateDoc(docRef, {completed: 1})
+    
     // getState()를 사용해서 스토어의 데이터를 가져올 수 있어!
-    // console.log(getState().data)
+    console.log(getState().data)
     // data_list 데이터를 가져오자
     // const _data_list = getState().data.list
     // 몇번째인지 찾기!

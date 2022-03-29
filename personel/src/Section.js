@@ -28,8 +28,14 @@ export default Section;
 const Container = styled.div`
     float: right;
     width: calc(100vw - 300px);
-    padding: 20px 40px;
+    padding: 40px 40px;
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     grid-gap: 40px;
+    
+    /* overflow-y: scroll;
+    -ms-overflow-style: none;  
+    scrollbar-width: none;
+    
+    &::-webkit-scrollbar{ display:none; } */
 `;

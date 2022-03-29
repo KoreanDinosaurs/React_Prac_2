@@ -1,14 +1,38 @@
-import React from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
 
 function Nav(){
+    const [currentClick, setCurrentClick] = useState('link1')
+    const [prevClick, setPrevClick] = useState(null)
+
+    React.useEffect(()=>{
+        if(currentClick){
+            const current = document.getElementById(currentClick);
+            current.style.color = "#333"
+            current.style.background = "#cdcccc"
+        }
+
+        if(prevClick){
+            const current = document.getElementById(prevClick);
+            current.style.color = "white"
+            current.style.background = "#333"
+        }
+
+        setPrevClick(currentClick)
+        
+    }, [currentClick])
+
+    const click = (e) => {
+        setCurrentClick(e.target.id)
+    }    
+
     return(
         <Wrap>
-            <StyledLink to="/*">All Language</StyledLink>
-            <StyledLink to="/chinese">Chinese</StyledLink>
-            <StyledLink to="/english">English</StyledLink>
-            <StyledLink to="/japanese">Japanese</StyledLink>
+            <StyledLink onClick={click} id="link1" to="/*">All Language</StyledLink>
+            <StyledLink onClick={click} id="link2" to="/chinese">Chinese</StyledLink>
+            <StyledLink onClick={click} id="link3" to="/english">English</StyledLink>
+            <StyledLink onClick={click} id="link4" to="/japanese">Japanese</StyledLink>
         </Wrap>
     )
 }
@@ -23,7 +47,7 @@ const Wrap = styled.div`
     background-color: #333;
     display: flex;
     flex-direction: column;
-    padding: 20px;
+    
 `;
 
 const StyledLink = styled(Link)`
@@ -31,5 +55,13 @@ const StyledLink = styled(Link)`
     text-decoration: none;
     font-size: 1.3em;
     font-weight: bold;
-    margin-bottom: 30px;
+    width: 100%;
+    /* height: 50px; */
+    padding: 40px 30px;
+
+    &:hover, :focus {
+        background-color: #cdcccc;
+        color: #333;
+        /* font-weight: bold; */
+    }
 `;
