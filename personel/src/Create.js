@@ -14,7 +14,7 @@ function Create() {
     const [currentClick, setCurrentClick] = useState(null)
     const [prevClick, setPrevClick] = useState(null)
 
-    useEffect((e)=>{
+    useEffect(()=>{
         if(currentClick){
             let current = document.getElementById(currentClick);
             current.style.color = "white"
@@ -35,7 +35,14 @@ function Create() {
  
     const addData = () => {
         const data = ref.current.map(v => v.value)
-        console.log(currentClick)
+        const key = ['단어', '발음', '의미', '예문', '해석']
+        
+        for(let i = 0; i < data.length; i++){
+            if(!data[i]) return window.alert(`'${key[i]}' 영역이 작성되지 않았습니다`)
+        }
+
+        if(!currentClick) return window.alert('언어의 종류가 선택되지 않았습니다.')
+
         const info = {
             language: currentClick,
             word: data[0],
@@ -45,8 +52,9 @@ function Create() {
             translation: data[4],
             completed: 0,
         }
+        
         dispatch(createDataFB(info));
-        navigate(-1);
+        navigate('/');
     }
 
     return(

@@ -2,7 +2,7 @@ import React, { useEffect, useRef } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate, useParams } from "react-router-dom";
 import styled from "styled-components";
-import { reviseData, updateDataFB } from "./redux/modules/data";
+import { updateDataFB } from "./redux/modules/data";
 
 function Revise() {
     const ref = useRef([]), btnRef = useRef(), url = useParams(), navigate = useNavigate(), dispatch= useDispatch();
@@ -22,6 +22,13 @@ function Revise() {
 
     const revise = () => {
         const data = ref.current.map(v => v.value)
+
+        const key = ['단어', '발음', '의미', '예문', '해석']
+        
+        for(let i = 0; i < data.length; i++){
+            if(!data[i]) return window.alert(`'${key[i]}' 영역이 작성되지 않았습니다`)
+        }
+
         const info = {
             word: data[0],
             sound: data[1],
@@ -30,6 +37,7 @@ function Revise() {
             translation: data[4],
         }
         dispatch(updateDataFB(info, url.id))
+        navigate('/')
     }
 
     return(
@@ -57,7 +65,7 @@ function Revise() {
                 <Input id="trans" ref={el => (ref.current[4] = el)} />
                 </Item>
                 <BtnWrap>
-                    <Button onClick={()=>{navigate(-1)}} ref={btnRef}>저장하기</Button>
+                    <Button ref={btnRef}>저장하기</Button>
                     <Button onClick={()=>{navigate(-1)}}>나가기</Button>
                 </BtnWrap>
             </Wrap>
