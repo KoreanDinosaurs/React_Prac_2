@@ -66,6 +66,10 @@ const Container = styled.div`
     display: flex;
     flex-direction: column;
     color: ${props => props.num ? "white" : "black"};
+
+    @media screen and (max-width: 480px) {
+        width: 380px;
+    }
 `;
 
 const Word = styled.span`

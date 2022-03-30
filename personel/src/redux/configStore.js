@@ -9,4 +9,5 @@ const rootReducer = combineReducers({data});
 
 const store = createStore(rootReducer, enhancer);
 
+
 export default store;

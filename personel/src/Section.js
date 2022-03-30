@@ -11,7 +11,6 @@ import Japanese from "./Japanese";
 function Section(){
     return (
         <Container>
-            
             <Routes>
                 <Route path="/*" element={<Article/>}/>
                 <Route path="/english" element={<English/>}/>
@@ -33,9 +32,27 @@ const Container = styled.div`
     grid-template-columns: repeat(3, 1fr);
     grid-gap: 40px;
     
-    /* overflow-y: scroll;
-    -ms-overflow-style: none;  
-    scrollbar-width: none;
+    @media screen and (max-width: 1400px) {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    @media screen and (max-width: 1200px) {
+        grid-template-columns: repeat(2, 1fr);
+        width: 100vw;
+        margin-top: 60px;
+    }
+
+    @media screen and (max-width: 800px) {
+        grid-template-columns: repeat(1, 1fr);
+        padding: 40px 60px;
+    }
     
-    &::-webkit-scrollbar{ display:none; } */
+    @media screen and (max-width: 480px) {
+        float: none;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding: 0px;
+        /* margin-top: 30px; */
+    }
 `;

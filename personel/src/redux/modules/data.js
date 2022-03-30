@@ -99,7 +99,7 @@ export const updateDataFB2 = (id) => {
     
     
     // getState()를 사용해서 스토어의 데이터를 가져올 수 있어!
-    console.log(getState().data)
+    console.log(getState())
     // data_list 데이터를 가져오자
     // const _data_list = getState().data.list
     // 몇번째인지 찾기!

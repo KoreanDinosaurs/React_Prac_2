@@ -58,6 +58,7 @@ function Create() {
     }
 
     return(
+
         <Container>
             <Wrap>
                 <span>단어 추가하기</span>
