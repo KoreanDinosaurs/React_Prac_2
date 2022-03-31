@@ -54,7 +54,7 @@ function Create() {
         }
         
         dispatch(createDataFB(info));
-        navigate(-1);
+        navigate('/*');
     }
 
     return(
@@ -105,6 +105,11 @@ const Container = styled.div`
     display: flex;
     justify-content: center;
     align-items: center;
+
+    @media screen and (max-width: 1200px) {
+        width: 100%;
+        height: calc(100vh - 110px);
+    }  
 `;
 
 const Wrap = styled.div`

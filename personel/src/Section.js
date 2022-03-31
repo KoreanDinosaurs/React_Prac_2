@@ -39,7 +39,6 @@ const Container = styled.div`
     @media screen and (max-width: 1200px) {
         grid-template-columns: repeat(2, 1fr);
         width: 100vw;
-        margin-top: 60px;
     }
 
     @media screen and (max-width: 800px) {
@@ -52,7 +51,6 @@ const Container = styled.div`
         display: flex;
         flex-direction: column;
         align-items: center;
-        padding: 0px;
-        /* margin-top: 30px; */
+        padding: 40px 0px;
     }
 `;

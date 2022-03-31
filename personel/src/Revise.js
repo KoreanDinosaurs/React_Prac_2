@@ -7,10 +7,9 @@ import { updateDataFB } from "./redux/modules/data";
 function Revise() {
     const ref = useRef([]), btnRef = useRef(), url = useParams(), navigate = useNavigate(), dispatch= useDispatch();
     const dict_list = useSelector(state => state.data.list)
-    
+    const dict = dict_list.filter(v => v.id === url.id)[0]
+
     useEffect(() => {
-        const dict = dict_list.filter(v => v.id === url.id)[0]
-        
         ref.current[0].value = dict.word
         ref.current[1].value = dict.sound
         ref.current[2].value = dict.meaning
@@ -83,6 +82,10 @@ const Container = styled.div`
     display: flex;
     justify-content: center;
     align-items: center;
+    @media screen and (max-width: 1200px) {
+        width: 100%;
+        height: calc(100vh - 110px);
+    } 
 `;
 
 const Wrap = styled.div`

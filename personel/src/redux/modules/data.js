@@ -45,7 +45,7 @@ export const loadDataFB = () => {
   return async function (dispatch) {
     // 데이터 가져오기!
     const data = await getDocs(collection(db, "dictionary"));
-    
+  
     let data_list = [];
 
     // 하나씩 우리가 쓸 수 있는 배열 데이터로 만들어주기!
@@ -56,7 +56,10 @@ export const loadDataFB = () => {
     })
     // 잘만들어졌는지 확인해보자!
     // console.log(data_list);
+
+    // const _data_list = data_list.slice(5*i,5)
     dispatch(loadData(data_list));
+    
   }
 }
 
