@@ -68,7 +68,7 @@ const Container = styled.div`
     color: ${props => props.num ? "white" : "black"};
 
     @media screen and (max-width: 480px) {
-        width: 380px;
+        width: 350px;
     }
 `;
 
